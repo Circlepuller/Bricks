@@ -8,8 +8,6 @@
 
 function defaultHandler()
 {
-  global $app;
-
   echo 'Hello, World!';
 
   return 200;
