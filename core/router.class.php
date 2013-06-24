@@ -2,7 +2,7 @@
 
 /**
  * @author    Dan Saunders <dsaunders at dansaunders dot me>
- * @version   1.0
+ * @version   1.1
  * @copyright 2013 Dan Saunders
  */
 
@@ -15,6 +15,11 @@ class Router
    * @var array
    */
   private $matches;
+
+  /**
+   * @var string
+   */
+  private $method;
 
   /**
    * @var string
@@ -47,6 +52,14 @@ class Router
   /**
    * @return string
    */
+  public function getMethod()
+  {
+    return $this->method;
+  }
+
+  /**
+   * @return string
+   */
   public function getPath()
   {
     return $this->path;
@@ -60,12 +73,16 @@ class Router
    */
   public function resolve($method = 'GET')
   {
+    $this->method = $method;
+
     if (array_key_exists($method, $this->routes)) {
       foreach (array_keys($this->routes[$method]) as $pattern) {
         if (preg_match($pattern, $this->path, $this->matches)) {
           ob_start();
+
           $response_code = $this->routes[$method][$pattern]();
           $response_body = ob_get_contents();
+
           ob_end_clean();
 
           // If we do not receive a response code, it is a 500
@@ -79,7 +96,7 @@ class Router
     }
 
     // We didn't receive anything so nothing was found
-    return array(404, '404');
+    return array(404, '404'); // Poor implementation
   }
 
   /**
@@ -89,6 +106,13 @@ class Router
    */
   public function route($method, $pattern, $handler)
   {
+    $method  = strtoupper($method);
+    $handler = $handler . '_controller';
+
+    if (!autoload_function($handler)) {
+      return;
+    }
+
     // Create a copy of the routing map
     $routes = $this->routes;
 
