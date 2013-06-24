@@ -3,4 +3,6 @@ Bricks
 
 A lightweight web framework for PHP >= 5.2
 
-__Status:__ _Stable_ &ndash; although you should wait until the release of 1.1 or 1.2 before developing apps for it &ndash; 1.1 and 1.2 are likely to break 1.0 apps.
+__Status:__ _Stable_ &ndash; try to expect that 1.2 will introduce breaking features.
+
+Like how controllers work? Don't like the file naming system? Feedback is appreciated! Submit ___constructive___ feedback via the issue tracker!
