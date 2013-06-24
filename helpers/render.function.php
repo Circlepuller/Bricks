@@ -14,7 +14,7 @@
  * @param string $__format
  * @param bool   $__globals
  */
-function render($__file, $__vars = array(), $__format = 'html', $__globals = false)
+function render($__file, $__vars = array(), $__globals = false)
 {
   // I feel bad for this, eventually this should be safer and the ilk.
   extract($__vars);
@@ -23,5 +23,5 @@ function render($__file, $__vars = array(), $__format = 'html', $__globals = fal
     extract($GLOBALS, EXTR_SKIP);
   }
 
-  include "views/$__file.$__format";
+  include "views/$__file";
 }

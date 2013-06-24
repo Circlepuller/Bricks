@@ -19,7 +19,7 @@ function default_controller()
   autoload_function('render');
 
   // Render the view using the render helper we loaded earlier.
-  render('default', array(
+  render('default.html', array(
     'operational' => 'Yes!'
   ));
 
