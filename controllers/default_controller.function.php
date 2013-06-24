@@ -21,7 +21,7 @@ function default_controller()
   // Render the view using the render helper we loaded earlier.
   render('default.html', array(
     'operational' => 'Yes!'
-  ));
+  ), true);
 
   /**
    * Now return a 200 OK since we've rendered the page without issue. (Or at
