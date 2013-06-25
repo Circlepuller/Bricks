@@ -15,8 +15,9 @@
  */
 function default_controller()
 {
-  // Load the view rendering helper.
+  // Load the helpers.
   autoload_function('render');
+  autoload_function('url');
 
   // Render the view using the render helper we loaded earlier.
   render('default.html', array(

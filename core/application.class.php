@@ -11,7 +11,14 @@
  */
 class Application
 { 
+  /**
+   * @var string
+   */
   private $directory;
+
+  /**
+   * @var Router
+   */
   private $router;
 
   /**
@@ -23,12 +30,12 @@ class Application
 
     if (array_key_exists('ORIG_PATH_INFO', $_SERVER) &&
       $_SERVER['ORIG_PATH_INFO']) {
-      $this->router = new Router($_SERVER['ORIG_PATH_INFO']);
+      $this->router = new Router($this->directory, $_SERVER['ORIG_PATH_INFO']);
     } else if (array_key_exists('PATH_INFO', $_SERVER) &&
       $_SERVER['PATH_INFO']) {
-      $this->router = new Router($_SERVER['PATH_INFO']);
+      $this->router = new Router($this->directory, $_SERVER['PATH_INFO']);
     } else {
-      $this->router = new Router();
+      $this->router = new Router($this->directory);
     }
   }
 

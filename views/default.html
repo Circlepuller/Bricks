@@ -16,7 +16,9 @@
       <h1>Hello, World</h1>
       <p>This is the default page for Bricks. If you have recently installed the software, you now know it is operational!</p>
       <p>Is PHP rendering the variables on this page? <strong style="color: green;"><?= $operational ?></strong></p>
+      <p>Is there a base path for the page? <strong style="color: green;"><?= $app->getRouter()->getBaseUrl() ?></strong></p>
       <p>Path used to access this page? <strong style="color: green;"><?= $app->getRouter()->getPath() ?></strong></p>
+      <P>Does the URL helper work? <strong style="color: green;"><?= url($app->getRouter()->getPath()) ?></strong></p>
     </div>
   </div>
 </body>

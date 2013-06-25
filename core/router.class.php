@@ -12,6 +12,11 @@
 class Router
 {
   /**
+   * @var string
+   */
+  private $base_url;
+
+  /**
    * @var array
    */
   private $matches;
@@ -34,11 +39,20 @@ class Router
   /**
    * @param string $path
    */
-  public function __construct($path = '/')
+  public function __construct($directory, $path = '/')
   {
+    $this->base_url = str_replace('\\', '/', substr($directory, strlen($_SERVER['DOCUMENT_ROOT'])));
     $this->matches = array();
     $this->path = $path;
     $this->routes = array();
+  }
+
+  /**
+   * @return string
+   */
+  public function getBaseUrl()
+  {
+    return $this->base_url;
   }
 
   /**
